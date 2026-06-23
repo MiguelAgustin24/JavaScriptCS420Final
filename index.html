@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎰 Super Slot Machine Deluxe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header -->
+        <header class="game-header">
+            <h1>🎰 SUPER SLOT MACHINE DELUXE 🎰</h1>
+            <div class="legend">
+                <span>💎 WILD</span>
+                <span>⭐ BONUS</span>
+                <span>🍒 Cherry</span>
+                <span>🍋 Lemon</span>
+                <span>🍊 Orange</span>
+                <span>7️⃣ Lucky 7</span>
+            </div>
+        </header>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat">
+                <span class="stat-label">💰 Balance:</span>
+                <span class="stat-value" id="balance">$0.00</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">🎮 Spins:</span>
+                <span class="stat-value" id="spins">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">🏆 Win Rate:</span>
+                <span class="stat-value" id="winrate">0%</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">💎 Biggest Win:</span>
+                <span class="stat-value" id="biggestwin">$0</span>
+            </div>
+        </div>
+
+        <!-- Free Spins Banner -->
+        <div id="freespins-banner" class="freespins-banner hidden">
+            ⭐ FREE SPINS: <span id="freespins-count">0</span> ⭐
+        </div>
+
+        <!-- Slot Machine -->
+        <div class="slot-machine">
+            <div class="reels" id="reels">
+                <div class="reel"><div class="symbol">❓</div></div>
+                <div class="reel"><div class="symbol">❓</div></div>
+                <div class="reel"><div class="symbol">❓</div></div>
+                <div class="reel"><div class="symbol">❓</div></div>
+                <div class="reel"><div class="symbol">❓</div></div>
+                <div class="reel"><div class="symbol">❓</div></div>
+                <div class="reel"><div class="symbol">❓</div></div>
+                <div class="reel"><div class="symbol">❓</div></div>
+                <div class="reel"><div class="symbol">❓</div></div>
+            </div>
+        </div>
+
+        <!-- Message Area -->
+        <div class="message-area">
+            <div id="message" class="message"></div>
+            <div id="achievement" class="achievement hidden"></div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls" id="deposit-section">
+            <h2>💵 Enter Deposit Amount</h2>
+            <input type="number" id="deposit-input" placeholder="Enter amount..." min="1" step="0.01">
+            <button onclick="makeDeposit()" class="btn btn-primary">Start Game</button>
+        </div>
+
+        <div class="controls hidden" id="game-section">
+            <div class="betting-controls">
+                <div class="control-group">
+                    <label for="lines-input">📊 Lines (1-5):</label>
+                    <input type="number" id="lines-input" value="3" min="1" max="5">
+                </div>
+                <div class="control-group">
+                    <label for="bet-input">💰 Bet per Line:</label>
+                    <input type="number" id="bet-input" value="10" min="1" step="0.01">
+                </div>
+            </div>
+            
+            <button onclick="spin()" id="spin-btn" class="btn btn-spin">🎰 SPIN 🎰</button>
+            
+            <div class="action-buttons">
+                <button onclick="showStats()" class="btn btn-secondary">📊 Stats</button>
+                <button onclick="showAchievements()" class="btn btn-secondary">🏆 Achievements</button>
+                <button onclick="resetGame()" class="btn btn-danger">🔄 New Game</button>
+            </div>
+        </div>
+
+        <!-- Modal for Stats/Achievements -->
+        <div id="modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

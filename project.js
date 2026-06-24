@@ -1,4 +1,4 @@
-// 1. Despot some money
+// 1. Deposit some money
 // 2. Determine number of lines to bet on
 // 3. Collect a bet amount
 // 4. Spin the slot machine
@@ -12,6 +12,7 @@ const ROWS = 3;
 const COLS = 3;
 
 const SYMBOLS_COUNT = {
+  // here is where we can change the odds of winning by changing the count of each symbol
   A: 2,
   B: 4,
   C: 6,
@@ -19,6 +20,7 @@ const SYMBOLS_COUNT = {
 };
 
 const SYMBOL_VALUES = {
+  // here is where we can change the payout values for each symbol
   A: 5,
   B: 4,
   C: 3,
@@ -38,6 +40,7 @@ const deposit = () => {
   }
 };
 
+// we can also add a function to get the number of lines to bet on and the bet amount per line
 const getNumberOfLines = () => {
   while (true) {
     const lines = prompt("Enter the number of lines to bet on (1-3): ");
@@ -51,6 +54,7 @@ const getNumberOfLines = () => {
   }
 };
 
+// we can also add a function to get the bet amount per line
 const getBet = (balance, lines) => {
   while (true) {
     const bet = prompt("Enter the bet per line: ");
@@ -64,6 +68,8 @@ const getBet = (balance, lines) => {
   }
 };
 
+
+// this function will handle the spinning of the slot machine and return the result
 const spin = () => {
   const symbols = [];
   for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)) {
@@ -72,6 +78,8 @@ const spin = () => {
     }
   }
 
+
+  // we will create a 2D array to represent the reels of the slot machine
   const reels = [];
   for (let i = 0; i < COLS; i++) {
     reels.push([]);
@@ -87,6 +95,8 @@ const spin = () => {
   return reels;
 };
 
+
+// this function will transpose the reels array to make it easier to check for wins
 const transpose = (reels) => {
   const rows = [];
 
@@ -100,6 +110,8 @@ const transpose = (reels) => {
   return rows;
 };
 
+
+// this function will print the rows of the slot machine in a nice format
 const printRows = (rows) => {
   for (const row of rows) {
     let rowString = "";
@@ -113,6 +125,8 @@ const printRows = (rows) => {
   }
 };
 
+
+// this function will check the rows for wins and calculate the winnings
 const getWinnings = (rows, bet, lines) => {
   let winnings = 0;
 
@@ -138,6 +152,7 @@ const getWinnings = (rows, bet, lines) => {
 const game = () => {
   let balance = deposit();
 
+  // the main game loop
   while (true) {
     console.log("You have a balance of $" + balance);
     const numberOfLines = getNumberOfLines();
